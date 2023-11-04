@@ -803,7 +803,7 @@ public class Console {
         String command = "";
         while (true) {
             println("============== 예매취소 ==============");
-            println("예매 코드 입력 (뒤로 가기: 0): ");
+            printf("예매 코드 입력 (뒤로 가기: 0): ");
             if ((command = input.getByPattern(LiteralRegex.RESERVATION_CODE)) == null) {
                 printError("입력 형식에 맞지 않습니다. 다시 입력해주세요.\n");
                 continue;
