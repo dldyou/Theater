@@ -43,12 +43,14 @@ public class TicketDto {
     public static TicketDto fromCancelledTicket(Ticket ticket) {
         final TicketDto ticketDto = from(ticket);
         ticketDto.lastModified = ticket.getCancellationTime();
+        ticketDto.isCancelled = true;
         return ticketDto;
     }
 
     public static TicketDto fromReservedTicket(Ticket ticket) {
         final TicketDto ticketDto = from(ticket);
         ticketDto.lastModified = ticket.getReservationTime();
+        ticketDto.isCancelled = false;
         return ticketDto;
     }
 
