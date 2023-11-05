@@ -20,6 +20,7 @@ public class Room extends Entity<String> implements EntityValidator {
                 this.seats[i][j] = new Seat(room.seats[i][j]);
             }
         }
+        this.validate();
     }
 
     public String toString() {

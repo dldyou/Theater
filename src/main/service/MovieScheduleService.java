@@ -116,4 +116,10 @@ public class MovieScheduleService {
         return null; // 원하는 Room이 없을 경우 null을 반환
     }
 
+
+
+    public MovieSchedule getByMovieAndDateAndRoomNumberAndStartAt(Movie movie, LocalDate date, Long roomNumber,
+                                                                  LocalTime startAt) {
+        return movieScheduleRepository.findOne(movie, date, roomNumber, startAt);
+    }
 }

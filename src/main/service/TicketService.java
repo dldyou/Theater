@@ -4,6 +4,7 @@ import entity.MovieSchedule;
 import entity.Ticket;
 import entity.TicketDto;
 import java.util.Comparator;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import repository.TicketRepository;
 
@@ -25,13 +26,17 @@ public class TicketService {
     }
 
     //cancelReservation함수는 예매 취소가 성공하는 경우 true를, 실패하는 경우 false를 반환합니다.
-    public boolean cancelReservation(String id, LocalDateTime cancellationTime) {
 
-        if (this.ticketRepository.findById(id).isPresent()) {
-            return this.ticketRepository.findById(id).get().cancel(cancellationTime);
-        } else {
+    public boolean isTicketExistsById(String id) {
+        return ticketRepository.findById(id).isPresent();
+    }
+
+    public boolean cancelReservation(String id, LocalDateTime cancellationTime) {
+        Optional<Ticket> actual = ticketRepository.findById(id);
+        if (!actual.isPresent()) {
             return false;
         }
+        return actual.get().cancel(cancellationTime);
     }
 
     //reservation.txt를 돌면서 주어진 전화번호와 동일한 티켓리스트 리턴

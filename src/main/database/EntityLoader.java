@@ -1,11 +1,19 @@
 package database;
 
-import entity.*;
+import entity.EntityValidator;
+import entity.Movie;
+import entity.MovieSchedule;
+import entity.Room;
+import entity.Seat;
+import entity.Ticket;
 import exception.EntityInstantiateException;
-
-import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import literal.LiteralRegex;
 import util.Input;
@@ -46,7 +54,11 @@ public class EntityLoader<E> {
                 validateCodeDuplication(data, attr[0]);
                 validateSeatDuplication(data, attr[1], attr[2]);
             }
-            data.put(attr[0], EntityFactory.createEntity(type, attr));
+            E entity = EntityFactory.createEntity(type, attr);
+            if (entity instanceof EntityValidator) {
+                ((EntityValidator) entity).validate();
+            }
+            data.put(attr[0], entity);
         }
         if (type.getName().equals("entity.MovieSchedule")) {
             validateMovieScheduleDuplication(data);
