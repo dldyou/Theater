@@ -479,7 +479,9 @@ public class Console {
                             1L),
                 null,
                 null,
-                systemTime
+                systemTime,
+                systemTime,
+                0
             ));
         }
     }
@@ -524,7 +526,9 @@ public class Console {
                 Long.parseLong(ticket.getMovieSchedule().getRoom().getRoomNumber())),
             null,
             null,
-            systemTime
+            systemTime,
+            systemTime,
+            0
             ));
         }
     }
@@ -607,7 +611,9 @@ public class Console {
                 rooms.get(getPageNumber(page, num) - 1)),
                 null,
                 null,
-                systemTime
+                systemTime,
+                systemTime,
+                0
             ));
         }
     }
@@ -702,7 +708,9 @@ public class Console {
                 Long.parseLong(ticket.getMovieSchedule().getRoom().getRoomNumber())),
                 null,
                 null,
-                systemTime
+                systemTime,
+                systemTime,
+            0
             ));
         }
     }
@@ -748,7 +756,9 @@ public class Console {
                 ticket.getMovieSchedule(),
                 command,
                 null,
-                systemTime
+                systemTime,
+                systemTime,
+            0
             ));
         }
     }
@@ -783,7 +793,9 @@ public class Console {
                 ticket.getMovieSchedule(),
                 ticket.getSeatId(),
                 command,
-                systemTime
+                systemTime,
+                systemTime,
+            0
             ));
         }
     }
