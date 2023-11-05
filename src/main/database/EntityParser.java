@@ -2,6 +2,7 @@ package database;
 
 import java.lang.reflect.Method;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -33,6 +34,10 @@ public class EntityParser {
 
     public static LocalTime parseTime(String data) {
         return LocalTime.parse(data, DateTimeFormatter.ofPattern("HH:mm"));
+    }
+
+    public static LocalDateTime parseDateTime(String data) {
+        return LocalDateTime.parse(data);
     }
 
     public static String parseString(String data) {
